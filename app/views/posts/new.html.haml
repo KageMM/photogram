@@ -1,0 +1,7 @@
+#content
+=simple_form_for @post, html:{class: 'form-vertical'} do |t|
+  =t.input :image, as: :file
+  =t.input :caption, label: 'Caption'
+  =t.button :submit
+%br
+=link_to "All Posts", root_path
