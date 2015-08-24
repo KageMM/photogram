@@ -1,7 +1,8 @@
 #content
-=simple_form_for @post, html:{class: 'form-vertical'} do |t|
-  =t.input :image, as: :file
-  =t.input :caption, label: 'Caption'
-  =t.button :submit
-%br
-=link_to "All Posts", root_path
+=simple_form_for @post, html:{class: 'form-vertical', multipart: true} do |t|
+  .form-group
+    =t.input :image, as: :file
+  .form-group.text-center
+    =t.input :caption, label: 'Caption'
+  .form-group.text-center
+    =t.button :submit, class: 'btn_success'
