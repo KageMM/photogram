@@ -24,12 +24,18 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(find_post)
-    
+
     if @post.update(post_params)
       redirect_to @post, notice: "Post was Successfully updated!!"
     else
       render "edit"
     end
+  end
+
+  def destroy
+    @post = Post.find(find_post)
+    @post = Post.destroy
+    redirect_to root_path
   end
 
   private
