@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -13,12 +15,26 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(find_params)
+    @post = Post.find(find_post)
+  end
+
+  def edit
+    @post = Post.find(find_post)
+  end
+
+  def update
+    @post = Post.find(find_post)
+    
+    if @post.update(post_params)
+      redirect_to @post, notice: "Post was Successfully updated!!"
+    else
+      render "edit"
+    end
   end
 
   private
 
-  def find_params
+  def find_post
     Post.find(params[:id])
   end
 
